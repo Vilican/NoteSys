@@ -44,8 +44,8 @@ $sql8="INSERT INTO `settings` (`id`, `value`) VALUES ('field', '". $field ."');"
 $sql9="INSERT INTO `settings` (`id`, `value`) VALUES ('date', '". $date ."');";
 $sql10="INSERT INTO `settings` (`id`, `value`) VALUES ('name', 'NoteSys');";
 $sql11="INSERT INTO `settings` (`id`, `value`) VALUES ('text', 'FFFFFF');";
-$sql12="INSERT INTO `settings` (`id`, `value`) VALUES ('backgrnd', 'D07000');";
-$sql13="INSERT INTO `settings` (`id`, `value`) VALUES ('zlinks', 'C6E33A');";
+$sql12="INSERT INTO `settings` (`id`, `value`) VALUES ('backgrnd', '659482');";
+$sql13="INSERT INTO `settings` (`id`, `value`) VALUES ('zlinks', 'FFF400');";
 $ok = 1;
 if ($conn->query($sql) === TRUE) {} else { echo "ERROR: " . $conn->error. "<br>"; $ok = 0;}
 if ($conn->query($sql2) === TRUE) {} else { echo "ERROR: " . $conn->error. "<br>"; $ok = 0;}
