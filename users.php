@@ -34,6 +34,9 @@ while($row = $result->fetch_assoc()) {
 		die("<h2>Internal database error</2>");
 		break;
 	}
+	if ($row["id"] == 0) {
+		$access = $su;
+	}
     echo "<p align='center'>". $row["name"]. "&nbsp;(". $access .")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='newpass.php?id=". $row["id"]. "'>".$resetpass."</a>&nbsp;&nbsp;<a href='accessswitch.php?id=". $row["id"]. "'>".$rights."</a>&nbsp;&nbsp;<a href='deluser.php?id=". $row["id"]. "'>".$delete."</a></p>";
 }
 
