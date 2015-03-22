@@ -1,0 +1,25 @@
+.mstheme{
+nav-banner-image:url(banner_sonora.gif);
+}
+a:link{
+color:#C6E33A;
+}
+a:visited{
+color:#C6E33A;
+}
+a:active{
+color:#FFC13C;
+}
+body{
+color:#FFFFFF;
+background-color:#D07000;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+background-image:url('background_sonora.gif');
+background-repeat: repeat-x;
+}
+p#copyright{
+font-size: 12px;
+position: fixed;
+bottom: 3px;
+right: 10px;
+}
