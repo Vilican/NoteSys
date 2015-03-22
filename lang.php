@@ -27,6 +27,14 @@ switch ($lng) {
 		$noetries = "There is no notes in system";
 		$editnote = "Edit note";
 		$chpass = "Change password";
+		$sysconf = "System configuration";
+		$title2 = "Title:";
+		$heading = "Heading:";
+		$textcol = "Text color:";
+		$bckgrndcol = "Background color:";
+		$dtname = "Date field name:";
+		$entryname = "Entry field name:";
+		$linkscol = "Links color:";
 		break;
 	case "cz":
 		$inst_welcome = "Vítejte v NoteSys";
@@ -54,6 +62,14 @@ switch ($lng) {
 		$noetries = "V systému nejsou žádné poznámky";
 		$editnote = "Upravit poznámku";
 		$chpass = "Změna hesla";
+		$sysconf = "Nastavení systému";
+		$title2 = "Titulek:";
+		$heading = "Nadpis:";
+		$textcol = "Barva textu:";
+		$bckgrndcol = "Barva pozadí:";
+		$dtname = "Popisek pole pro heslo:";
+		$entryname = "Popisek pole pro zápis:";
+		$linkscol = "Barva odkazů:";
 		break;
 }
 ?>
