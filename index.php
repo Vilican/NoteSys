@@ -18,7 +18,7 @@ $field2 = $field;
 $date2 = $date;
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        echo "<p align='center'>". $date2 . " " . $row["date"]. "</p><p align='center'>". $field2 . " " . $row["value"]. "</p><br>";
+        echo "<p align='center'>". $date2 . " " . date('d.m.Y', $row["date"]). "</p><p align='center'>". $field2 . " " . $row["value"]. "</p><br>";
     }
 } else {
     echo "<p align='center'>". $noetries ."</p>";

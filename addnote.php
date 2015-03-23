@@ -37,14 +37,14 @@ echo '<p id="title">'. $name .'</p><a href="notes.php">'.$discard.'</a><!doctype
 			<td><input type="submit" value="'. $submit .'" name="ok"></td>
 		</tr>
 	</table>
-</div></form></body></html>';
+</div></form><p id="copyright">Powered by <a href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';
 
 if (isset($_POST["ok"])) {
 	if (($_POST["date"] == null) or ($_POST["value"] == null)) {
 		header('Location: notes.php');
 		die();
 	} else {
-	$sql2 = "INSERT INTO `entries` (`id`, `date`, `value`, `autor`) VALUES ('".$newid."', '".$_POST["date"]."', '".$_POST["value"]."', '".$_SESSION["id"]."')";
+	$sql2 = "INSERT INTO `entries` (`id`, `date`, `value`, `autor`) VALUES ('".$newid."', '". strtotime($_POST["date"]) ."', '".$_POST["value"]."', '".$_SESSION["id"]."')";
 	$result2 = $conn->query($sql2);
 	$sqlupid = "UPDATE `lastid` SET `lastid` = '". $newid ."' WHERE `lastid`.`type` = 'notes'";
 	$resultupid = $conn->query($sqlupid);

@@ -32,7 +32,7 @@ echo '<p id="title">'. $name .'</p><a href="notes.php">'.$discard.'</a><!doctype
 			<td><input type="submit" value="'.$submit.'" name="ok"></td>
 		</tr>
 	</table>
-</div></form></body></html>';
+</div></form><p id="copyright">Powered by <a href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';
 
 if (isset($_POST["ok"])) {
 	if (($_POST["pass"] == null) or ($_POST["pass2"] == null) or ($_POST["pass"] != $_POST["pass2"])) {

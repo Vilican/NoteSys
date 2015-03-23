@@ -31,7 +31,7 @@ echo '<p id="title">'. $name .'</p><a href="notes.php">'.$discard.'</a><!doctype
 	<table border="0" width="50%">
 		<tr>
 			<td>'.$date.'</td>
-			<td><input type="text" name="date" value="' . $val["date"] . '" size="20"></td>
+			<td><input type="text" name="date" value="' . date('d.m.Y', $val["date"]) . '" size="20"></td>
 		</tr>
 		<tr>
 			<td>'.$field.'</td>
@@ -42,14 +42,14 @@ echo '<p id="title">'. $name .'</p><a href="notes.php">'.$discard.'</a><!doctype
 			<td><input type="submit" value="'. $submit .'" name="ok"></td>
 		</tr>
 	</table>
-</div></form></body></html>';
+</div></form><p id="copyright">Powered by <a href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';
 
 if (isset($_POST["ok"])) {
 	if (($_POST["date"] == null) or ($_POST["value"] == null)) {
 		header('Location: notes.php');
 		die();
 	} else {
-	$sql2 = "UPDATE `entries` SET `date` = '" . $_POST["date"] . "', `value` = '" . $_POST["value"] . "' WHERE `entries`.`id` = " . $_GET["id"];
+	$sql2 = "UPDATE `entries` SET `date` = '" . strtotime($_POST["date"]) . "', `value` = '" . $_POST["value"] . "' WHERE `entries`.`id` = " . $_GET["id"];
 	$result2 = $conn->query($sql2);
 	}
 	$conn->close();
