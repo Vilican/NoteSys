@@ -1,24 +1,17 @@
 <?php
-
 // BEGIN OF CONFIGURATION - DO NOT CHANGE ANYTHING ABOVE
-
 // language (en,cz)
-$lng = "cz";
-
+$lng = "en";
 // MySQL
 $host = "localhost";
 $user = "";
 $pass = "";
 $database = "";
-
 // END OF CONFIGURATION - DO NOT CHANGE ANYTHING BELOW
-
 $conn = new mysqli($host, $user, $pass, $database);
-
 if ($conn->connect_error) {
     die("<h2>Error while conecting to MySQL. Check config.php or contact administrator.</h2>");
 }
-
 $sqlspg = "SELECT * FROM `settings`";
 $resspg = $conn->query($sqlspg);
 if ($resspg->num_rows > 0) {
@@ -50,7 +43,5 @@ if ($resspg->num_rows > 0) {
 		$i = $i + 1;
 	}
 }
-
 require_once "lang.php";
-
 ?>

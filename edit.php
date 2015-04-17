@@ -1,34 +1,20 @@
 <?php
-
 require 'config.php';
-require 'checklogin.php';
-
+require 'funct.php';
+checklogin("yes");
 if ($_GET["id"] == null) {
-	header('Location: notes.php');
+	header('Location: index.php');
 	die();
 }
-
 $sql = "SELECT * FROM `entries` WHERE `entries`.`id` = ". $_GET["id"];
 $result = $conn->query($sql);
 $val = $result->fetch_assoc();
-if (($val["autor"] == $_SESSION["id"]) or ($_SESSION["id"] == 0) or ($isadmin == 1)) {
-
-echo '<p id="title">'. $name .'</p><a href="notes.php">'.$discard.'</a><!doctype html><html><head>
-<meta name="generator" content="NoteSys">
-<meta name="robots" content="noindex,nofollow">
-<META http-equiv="cache-control" content="no-cache">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-<title>'. $title .'</title>
-<!--mstheme--><link rel="stylesheet" href="sono1011-1250.css">
-<style>body{color:'. $text .';background-color:'. $backgrnd .';}a{color:'. $links .';}</style>
-<meta name="Microsoft Theme" content="sonora 1011">
-</head><body>
-<form action="edit.php?id='. $_GET["id"] .'" method="post">
-<p align="center">&nbsp;</p>
-<p align="center"><b><font size="5">'.$editnote.'</font></b></p>
-<div align="center">
-	<p align="center">&nbsp;</p>
-	<table border="0" width="50%">
+if (($val["autor"] == $_SESSION["id"]) or ($_SESSION["id"] == 1) or ($_SESSION["isadmin"] == 1)) {
+templ();
+echo '<form action="edit.php?id='. $_GET["id"] .'" method="post"><br>
+<p class="center" style="font-size:24px;"><strong>'.$editnote.'</strong></p>
+<div align="center"><br>
+	<table style="border:0px; width=50%; font-size:15px;">
 		<tr>
 			<td>'.$date.'</td>
 			<td><input type="text" name="date" value="' . date('d.m.Y', $val["date"]) . '" size="20"></td>
@@ -42,18 +28,18 @@ echo '<p id="title">'. $name .'</p><a href="notes.php">'.$discard.'</a><!doctype
 			<td><input type="submit" value="'. $submit .'" name="ok"></td>
 		</tr>
 	</table>
-</div></form><p id="copyright">Powered by <a href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';
-
+</div></form>';
+footer();
 if (isset($_POST["ok"])) {
 	if (($_POST["date"] == null) or ($_POST["value"] == null)) {
-		header('Location: notes.php');
+		header('Location: index.php');
 		die();
 	} else {
 	$sql2 = "UPDATE `entries` SET `date` = '" . strtotime($_POST["date"]) . "', `value` = '" . $_POST["value"] . "' WHERE `entries`.`id` = " . $_GET["id"];
 	$result2 = $conn->query($sql2);
 	}
 	$conn->close();
-	header('Location: notes.php');
+	header('Location: index.php');
 }
 }
 ?>

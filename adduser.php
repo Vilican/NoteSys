@@ -1,29 +1,20 @@
 ﻿<?php
-
 require 'config.php';
-require 'checklogin.php';
-
+require 'funct.php';
+checklogin("yes");
+if ($_SESSION["id"] != 1) {
+	header('Location: index.php');
+	die();
+}
+templ();
 $sqlid = "SELECT * FROM `lastid` WHERE `type` = 'users'";
 $resultid = $conn->query($sqlid);
 $valid = $resultid->fetch_assoc();
 $newid = $valid["lastid"] + 1;
-
-echo '<p id="title">'. $name .'</p><a href="users.php">'.$discard.'</a><!doctype html><html><head>
-<meta name="generator" content="NoteSys">
-<meta name="robots" content="noindex,nofollow">
-<META http-equiv="cache-control" content="no-cache">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-<title>'. $title .'</title>
-<!--mstheme--><link rel="stylesheet" href="sono1011-1250.css">
-<style>body{color:'. $text .';background-color:'. $backgrnd .';}a{color:'. $links .';}</style>
-<meta name="Microsoft Theme" content="sonora 1011">
-</head><body>
-<form action="newuser.php" method="post">
-<p align="center">&nbsp;</p>
-<p align="center"><b><font size="5">'. $newuser .'</font></b></p>
-<div align="center">
-	<p align="center">&nbsp;</p>
-	<table border="0" width="50%">
+echo '<form action="adduser.php" method="post"><br>
+<p class="center" style="font-size:24px;"><strong>'. $newuser .'</strong></p>
+<div align="center"><br>
+	<table style="border:0px; width=30%; font-size:15px;">
 		<tr>
 			<td>'.$user.'</td>
 			<td><input type="text" name="user" size="20"></td>
@@ -37,15 +28,14 @@ echo '<p id="title">'. $name .'</p><a href="users.php">'.$discard.'</a><!doctype
 			<td><input type="submit" value="'.$submit.'" name="ok"></td>
 		</tr>
 	</table>
-</div></form><p id="copyright">Powered by <a href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';
-
+</div></form>';
+footer();
 if (isset($_POST["ok"])) {
 	if (($_POST["pass"] == null) or ($_POST["user"] == null)) {
 		$conn->close();
 		header('Location: users.php');
 		die();
 	}
-	
 	$salt = substr( "abcvwxdefghiLMNOPQjkuyzADEFBCGHIJKlmnopqrstRSTUVWXYZ" ,mt_rand( 0 ,50 ) ,1 ) .substr( md5( time() ), 1);
 	$salt2 = substr( "STUVabdefghiLMNOPQjkuyzADEFcvwxBCGqHIJKlmnoprstRWXYZ" ,mt_rand( 0 ,50 ) ,1 ) .substr( md5( time() ), 1);
 	$hash = sha1($salt2 . $_POST["user"] . $_POST["pass"] . $_POST["user"] . $salt);

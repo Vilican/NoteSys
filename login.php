@@ -1,36 +1,55 @@
 <?php
 
-require 'config.php';
-
-echo '<p id="title">'. $name .'</p><a href="index.php">'.$goback.'</a><!doctype html><html><head>
-<meta name="generator" content="NoteSys">
-<meta name="robots" content="noindex,nofollow">
-<META http-equiv="cache-control" content="no-cache">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-<title>'. $title .'</title>
-<!--mstheme--><link rel="stylesheet" href="sono1011-1250.css">
-<style>body{color:'. $text .';background-color:'. $backgrnd .';}a{color:'. $links .';}</style>
-<meta name="Microsoft Theme" content="sonora 1011">
-</head><body>
-<form action="processlogin.php" method="post">
-<p align="center">&nbsp;</p>
-<p align="center"><b><font size="5">'. $login_heading .'</font></b></p>
+require "config.php";
+require_once "funct.php";
+templ();
+echo '<form action="login.php" method="post"><br>
+<p class="center" style="font-size:24px;"><strong>'. $login_heading .'</strong></p>
 <div align="center">
-	<p align="center">&nbsp;</p>
-	<table border="0" width="30%">
+	<br>
+	<table style="border:0px; width=30%; font-size:15px;">
 		<tr>
 			<td>'. $user .'</td>
 			<td><input type="text" name="name" size="20"></td>
 		</tr>
 		<tr>
 			<td>'. $password .'</td>
-			<td><input type="password" name="password" size="20"></td>
+			<td><input type="password" name ="password" size="20"></td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
 			<td><input type="submit" value="'. $dologin .'" name="ok"></td>
 		</tr>
 	</table>
-</div></form><p id="copyright">Powered by <a href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';
+</div></form>';
+footer();
 
+if (isset($_POST["ok"])) {
+
+$sql = "SELECT * FROM `users` WHERE name = '" . $_POST["name"] . "'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	$row = $result->fetch_assoc();
+    $hash = sha1($row["salt2"] . $row["name"] . $_POST["password"] . $row["name"] . $row["salt"]);
+	if ($hash == $row["pass"]) {
+		session_start();
+		session_unset();
+		session_destroy();
+		session_start();
+		$_SESSION["hash"] = sha1($hash . $row["name"]);
+		$_SESSION["id"] = $row["id"];
+		$conn->close();
+		header('Location: index.php');
+		die();
+	} else {
+		$conn->close();
+		header('Location: login.php');
+	}
+} else {
+	$conn->close();
+	header('Location: login.php');
+}
+$conn->close();
+}
 ?>

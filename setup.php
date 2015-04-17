@@ -1,28 +1,17 @@
 <?php
 
 require 'config.php';
-require 'checklogin.php';
-
-if ($_SESSION["id"] != 0) {
-	die("<h2>Přístup odepřen!</h2>");
+require 'funct.php';
+checklogin("yes");
+if ($_SESSION["id"] != 1) {
+	header('Location: index.php');
+	die();
 }
-
-echo '<p id="title">'. $name .'</p><a href="logout.php"><a href="notes.php">'.$discard.'</a><!doctype html><html><head>
-<meta name="generator" content="NoteSys">
-<meta name="robots" content="noindex,nofollow">
-<META http-equiv="cache-control" content="no-cache">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-<title>'. $title .'</title>
-<!--mstheme--><link rel="stylesheet" href="sono1011-1250.css">
-<style>body{color:'. $text .';background-color:'. $backgrnd .';}a{color:'. $links .';}</style>
-<meta name="Microsoft Theme" content="sonora 1011">
-</head><body>
-<form action="setup.php" method="post">
-<p align="center">&nbsp;</p>
-<p align="center"><b><font size="5">'.$sysconf.'</font></b></p>
-<div align="center">
-	<p align="center">&nbsp;</p>
-	<table border="0" width="50%">
+templ();
+echo '<form action="setup.php" method="post"><br>
+<p class="center" style="font-size:24px;"><strong>'.$sysconf.'</strong></p>
+<div align="center"><br>
+	<table style="border:0px; width=50%; font-size:15px;">
 		<tr>
 			<td>'.$title2.'</td>
 			<td><input type="text" name="title" size="20" value="'. $title .'"></td>
@@ -56,11 +45,11 @@ echo '<p id="title">'. $name .'</p><a href="logout.php"><a href="notes.php">'.$d
 			<td><input type="submit" value="'.$submit.'" name="ok"></td>
 		</tr>
 	</table>
-</div></form><p id="copyright">Powered by <a href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';
-
+</div></form>';
+footer();
 if (isset($_POST["ok"])) {
 	if (($_POST["title"] == null) or ($_POST["heading"] == null) or ($_POST["txtcol"] == null) or ($_POST["bckcol"] == null) or ($_POST["date"] == null) or ($_POST["field"] == null) or ($_POST["links"] == null)) {
-		header('Location: notes.php');
+		header('Location: index.php');
 		die();
 	} else {
 	$sql2 = "UPDATE `settings` SET `value` = '". $_POST["bckcol"] ."' WHERE `settings`.`id` = 'backgrnd'";
@@ -79,6 +68,6 @@ if (isset($_POST["ok"])) {
 	$result8 = $conn->query($sql8);
 	}
 	$conn->close();
-	header('Location: notes.php');
+	header('Location: index.php');
 }
 ?>

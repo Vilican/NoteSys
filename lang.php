@@ -36,6 +36,7 @@ switch ($lng) {
 		$entryname = "Entry field name:";
 		$linkscol = "Links color:";
 		$su = "superuser";
+		$notes = "Notes";
 		break;
 	case "cz":
 		$inst_welcome = "Vítejte v NoteSys";
@@ -72,6 +73,7 @@ switch ($lng) {
 		$entryname = "Popisek pole pro zápis:";
 		$linkscol = "Barva odkazů:";
 		$su = "superuživatel";
+		$notes = "Poznámky";
 		break;
 }
 ?>

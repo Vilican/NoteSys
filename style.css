@@ -1,6 +1,6 @@
 body{
 font-family:Verdana,Arial,Helvetica,sans-serif;
-background-image:url('background_sonora.svg');
+background-image:url('head_img.svg');
 background-repeat: repeat-x;
 }
 p#title{
@@ -13,4 +13,17 @@ font-size: 12px;
 position: fixed;
 bottom: 3px;
 right: 10px;
+}
+.center{
+text-align: center;
+}
+form {
+    width: 80%;
+    margin: 0 auto;
+}
+.center2, input {
+    display: inline-block;
+}
+input + input {
+    float: right;
 }
