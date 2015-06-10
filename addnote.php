@@ -7,8 +7,7 @@ $resultid = $conn->query($sqlid);
 $valid = $resultid->fetch_assoc();
 $newid = $valid["lastid"] + 1;
 templ();
-echo '<form action="addnote.php" method="post">
-<p class="center">&nbsp;</p>
+echo '<form action="addnote.php" method="post"><br>
 <p class="center" style="font-size:24px;"><strong>'.$addnote.'</strong></p>
 <div align="center"><br>
 	<table style="border:0px; width=50%; font-size:15px;">
