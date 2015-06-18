@@ -20,6 +20,5 @@ if ($result->num_rows > 0) {
     echo "<p class='center'>".$noetries."</p>";
 }
 $conn->close();
-$conn->close();
 footer();
 ?>
