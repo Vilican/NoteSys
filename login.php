@@ -26,13 +26,13 @@ footer();
 
 if (isset($_POST["ok"])) {
 
-$sql = "SELECT * FROM `users` WHERE name = '" . $_POST["name"] . "'";
+$sql = "SELECT * FROM `users` WHERE name = '" . santise($_POST["name"]) . "'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 	$row = $result->fetch_assoc();
     $hash = sha1($row["salt2"] . $row["name"] . $_POST["password"] . $row["name"] . $row["salt"]);
-	if ($hash == $row["pass"]) {
+	if (slow_equals($hash, $row["pass"])) {
 		session_start();
 		session_unset();
 		session_destroy();

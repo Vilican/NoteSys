@@ -31,7 +31,7 @@ if (isset($_POST["ok"])) {
 		header('Location: index.php');
 		die();
 	} else {
-	$sql2 = "INSERT INTO `entries` (`id`, `date`, `value`, `autor`) VALUES ('".$newid."', '". strtotime($_POST["date"]) ."', '".$_POST["value"]."', '".$_SESSION["id"]."')";
+	$sql2 = "INSERT INTO `entries` (`id`, `date`, `value`, `autor`) VALUES ('".$newid."', '". santise(strtotime($_POST["date"])) ."', '". santise($_POST["value"]) ."', '".$_SESSION["id"]."')";
 	$result2 = $conn->query($sql2);
 	$sqlupid = "UPDATE `lastid` SET `lastid` = '". $newid ."' WHERE `lastid`.`type` = 'notes'";
 	$resultupid = $conn->query($sqlupid);

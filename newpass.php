@@ -11,7 +11,7 @@ if ($_GET["id"] == null) {
 	die();
 }
 templ();
-echo '<form action="newpass.php?id='. $_GET["id"] .'" method="post"><br>
+echo '<form action="newpass.php?id='. santise($_GET["id"]) .'" method="post"><br>
 <p class="center" style="font-size:24px;"><strong>'.$resetpass.'</strong></p>
 <div align="center"><br>
 	<table style="border:0px; width=50%; font-size:15px;">
@@ -32,11 +32,13 @@ if (isset($_POST["ok"])) {
 		header('Location: users.php');
 		die();
 	}
-	$sql3 = "SELECT * FROM `users` WHERE `users`.`id` = ". $_GET["id"];
+	$sql3 = "SELECT * FROM `users` WHERE `users`.`id` = ". santise($_GET["id"]);
 	$result3 = $conn->query($sql3);
 	$query = $result3->fetch_assoc();
-	$hash = sha1($query["salt2"] . $query["name"] . $_POST["pass"] . $query["name"] . $query["salt"]);
-	$sql2 = "UPDATE `users` SET `pass` = '". $hash ."' WHERE `users`.`id` = ". $_GET["id"];
+	$salt = substr( "abwxdNOefghiLMjkEFuyzADIJKlmnopTPQUqrstRSVBCcvGHWXYZ" ,mt_rand( 0 ,50 ) ,1 ) .substr( md5( time() ), 1);
+	$salt2 = substr( "STUVabdefghiLMNOPQjkuyzADEFcvwxBCGqHIJKlmnoprstRWXYZ" ,mt_rand( 0 ,50 ) ,1 ) .substr( md5( time() ), 1);
+	$hash = sha1($salt2 . $query["name"] . $_POST["pass"] . $query["name"] . $salt);
+	$sql2 = "UPDATE `users` SET `pass` = '". $hash ."', `salt` = '". $salt ."', `salt2` = '". $salt2 ."' WHERE `users`.`id` = ". santise($_GET["id"]);
 	$result2 = $conn->query($sql2);
 	$conn->close();
 	header('Location: users.php');

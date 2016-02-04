@@ -23,13 +23,8 @@ if ($_SESSION["id"] == 1) {
 	echo '&nbsp;&nbsp;&nbsp;&nbsp;<a href="chpass.php">'.$chpass.'</a></div>'; }}
 }
 function footer() {
-require 'config.php';
-require 'lang.php';
-if ($lng == "cz") {
-echo '<p id="copyright">Powered by <a href="https://notesys_cz.sufix.cz">NoteSys</a></p></body></html>';
-} else {
 echo '<p id="copyright">Powered by <a href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';	
-}}
+}
 function checklogin($require){
 require 'config.php';
 require 'lang.php';
@@ -50,5 +45,18 @@ if (sha1($userrow["pass"] . $userrow["name"]) != $_SESSION["hash"]) {
 }
 $_SESSION["isadmin"] = "0";
 $_SESSION["isadmin"] = $userrow["admin"];
+}
+function santise($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+function slow_equals($a, $b) {
+	$diff = strlen($a) ^ strlen($b);
+	for($i = 0; $i < strlen($a) && $i < strlen($b); $i++) {
+		$diff |= ord($a[$i]) ^ ord($b[$i]);
+	}
+	return $diff === 0;
 }
 ?>

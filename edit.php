@@ -6,12 +6,12 @@ if ($_GET["id"] == null) {
 	header('Location: index.php');
 	die();
 }
-$sql = "SELECT * FROM `entries` WHERE `entries`.`id` = ". $_GET["id"];
+$sql = "SELECT * FROM `entries` WHERE `entries`.`id` = ". santise($_GET["id"]);
 $result = $conn->query($sql);
 $val = $result->fetch_assoc();
 if (($val["autor"] == $_SESSION["id"]) or ($_SESSION["id"] == 1) or ($_SESSION["isadmin"] == 1)) {
 templ();
-echo '<form action="edit.php?id='. $_GET["id"] .'" method="post"><br>
+echo '<form action="edit.php?id='. santise($_GET["id"]) .'" method="post"><br>
 <p class="center" style="font-size:24px;"><strong>'.$editnote.'</strong></p>
 <div align="center"><br>
 	<table style="border:0px; width=50%; font-size:15px;">
@@ -35,7 +35,7 @@ if (isset($_POST["ok"])) {
 		header('Location: index.php');
 		die();
 	} else {
-	$sql2 = "UPDATE `entries` SET `date` = '" . strtotime($_POST["date"]) . "', `value` = '" . $_POST["value"] . "' WHERE `entries`.`id` = " . $_GET["id"];
+	$sql2 = "UPDATE `entries` SET `date` = '" . santise(strtotime($_POST["date"])) . "', `value` = '" . santise($_POST["value"]) . "' WHERE `entries`.`id` = " . santise($_GET["id"]);
 	$result2 = $conn->query($sql2);
 	}
 	$conn->close();

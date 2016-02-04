@@ -31,8 +31,10 @@ if (isset($_POST["ok"])) {
 	$sql3 = "SELECT * FROM `users` WHERE `users`.`id` = ". $_SESSION["id"];
 	$result3 = $conn->query($sql3);
 	$query = $result3->fetch_assoc();
-	$hash = sha1($query["salt2"] . $query["name"] . $_POST["pass"] . $query["name"] . $query["salt"]);
-	$sql2 = "UPDATE `users` SET `pass` = '". $hash ."' WHERE `users`.`id` = ". $_SESSION["id"];
+	$salt = substr( "abwxdNOefghiLMjkEFuyzADIJKlmnopTPQUqrstRSVBCcvGHWXYZ" ,mt_rand( 0 ,50 ) ,1 ) .substr( md5( time() ), 1);
+	$salt2 = substr( "STUVabdefghiLMNOPQjkuyzADEFcvwxBCGqHIJKlmnoprstRWXYZ" ,mt_rand( 0 ,50 ) ,1 ) .substr( md5( time() ), 1);
+	$hash = sha1($salt2 . $query["name"] . $_POST["pass"] . $query["name"] . $salt);
+	$sql2 = "UPDATE `users` SET `pass` = '". $hash ."', `salt` = '". $salt ."', `salt2` = '". $salt2 ."' WHERE `users`.`id` = ". $_SESSION["id"];
 	$result2 = $conn->query($sql2);
 	$conn->close();
 	header('Location: index.php');

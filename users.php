@@ -26,7 +26,7 @@ while($row = $result->fetch_assoc()) {
 	if ($row["id"] == 1) {
 		$access = $su;
 	}
-    echo "<p class='center'>". $row["name"]. "&nbsp;(". $access .")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='newpass.php?id=". $row["id"]. "'>".$resetpass."</a>&nbsp;&nbsp;<a href='accessswitch.php?id=". $row["id"]. "'>".$rights."</a>&nbsp;&nbsp;<a href='deluser.php?id=". $row["id"]. "'>".$delete."</a></p>";
+    echo "<p class='center'>". $row["name"]. "&nbsp;(". $access .")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='newpass.php?id=". $row["id"]. "'>".$resetpass."</a>&nbsp;&nbsp;<a href='accessswitch.php?id=". $row["id"]. "'>".$rights."</a>&nbsp;&nbsp;<a href='rename.php?id=". $row["id"]. "'>".$rename."</a>&nbsp;&nbsp;<a href='deluser.php?id=". $row["id"]. "'>".$delete."</a></p>";
 }
 $conn->close();
 footer();

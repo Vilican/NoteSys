@@ -37,6 +37,13 @@ switch ($lng) {
 		$linkscol = "Links color:";
 		$su = "superuser";
 		$notes = "Notes";
+		$nsver = "Version";
+		$exists = "Exists (delete it - security risk)";
+		$notexists = "Deleted - OK";
+		$instexistch = "Install folder";
+		$duplicate = "Username already in use!";
+		$rename = "Rename";
+		$rp = "Renaming a user will cause reset of his password to blank";
 		break;
 	case "cz":
 		$inst_welcome = "Vítejte v NoteSys";
@@ -46,7 +53,7 @@ switch ($lng) {
 		$discard = "Zpátky na web (zrušit změny)";
 		$goback = "Zpátky na web";
 		$submit = "Odeslat";
-		$login = "Přihlásit se";
+		$login = "Přihlásit";
 		$login_heading = "Přihlášení";
 		$dologin = "Přihlásit";
 		$user = "Uživatel:";
@@ -74,6 +81,13 @@ switch ($lng) {
 		$linkscol = "Barva odkazů:";
 		$su = "superuživatel";
 		$notes = "Poznámky";
+		$nsver = "Verze";
+		$exists = "Existuje (smažte - bezpečnostní riziko)";
+		$notexists = "Smazána - OK";
+		$instexistch = "Instalační složka";
+		$duplicate = "Jméno již použito!";
+		$rename = "Přejmenovat";
+		$rp = "Přejmenování uživatele způsobí reset jeho hesla na prázdné";
 		break;
 }
 ?>
