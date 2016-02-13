@@ -43,7 +43,11 @@ switch ($lng) {
 		$instexistch = "Install folder";
 		$duplicate = "Username already in use!";
 		$rename = "Rename";
-		$rp = "Renaming a user will cause reset of his password to blank";
+		$actual = "Actual";
+		$blankp = "No field can be blank!";
+		$confdelno = "Really delete this note?";
+		$confdelnu = "Really delete this user?";
+		$back = "Back";
 		break;
 	case "cz":
 		$inst_welcome = "Vítejte v NoteSys";
@@ -85,9 +89,13 @@ switch ($lng) {
 		$exists = "Existuje (smažte - bezpečnostní riziko)";
 		$notexists = "Smazána - OK";
 		$instexistch = "Instalační složka";
-		$duplicate = "Jméno již použito!";
+		$duplicate = "Jméno již používáno!";
 		$rename = "Přejmenovat";
-		$rp = "Přejmenování uživatele způsobí reset jeho hesla na prázdné";
+		$actual = "Aktuální";
+		$blankp = "Žádné pole nemůže být prázdné!";
+		$confdelno = "Opravdu smazat tuto poznámku?";
+		$confdelnu = "Opravdu smazat tohoto uživatele?";
+		$back = "Zpět";
 		break;
 }
 ?>

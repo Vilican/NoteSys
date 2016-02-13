@@ -17,7 +17,7 @@ echo '<form action="login.php" method="post"><br>
 			<td><input type="password" name ="password" size="20"></td>
 		</tr>
 		<tr>
-			<td>&nbsp;</td>
+			<td><a href="index.php">'. $back .'</a></td>
 			<td><input type="submit" value="'. $dologin .'" name="ok"></td>
 		</tr>
 	</table>

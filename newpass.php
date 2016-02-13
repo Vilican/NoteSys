@@ -10,10 +10,17 @@ if ($_GET["id"] == null) {
 	header('Location: users.php');
 	die();
 }
+if ($_GET["id"] == 1) {
+	header('Location: users.php');
+	die();
+}
+if (isset($_GET["1"])) {
+	$err = $blankp . "<br><br>";
+}
 templ();
 echo '<form action="newpass.php?id='. santise($_GET["id"]) .'" method="post"><br>
 <p class="center" style="font-size:24px;"><strong>'.$resetpass.'</strong></p>
-<div align="center"><br>
+<div align="center"><br>'. $err .'
 	<table style="border:0px; width=50%; font-size:15px;">
 		<tr>
 			<td>'.$newpass.'</td>
@@ -29,7 +36,7 @@ footer();
 if (isset($_POST["ok"])) {
 	if ($_POST["pass"] == null) {
 		$conn->close();
-		header('Location: users.php');
+		header('Location: newpass.php?1&id=' . $_GET["id"]);
 		die();
 	}
 	$sql3 = "SELECT * FROM `users` WHERE `users`.`id` = ". santise($_GET["id"]);

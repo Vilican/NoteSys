@@ -12,11 +12,14 @@ $resultid = $conn->query($sqlid);
 $valid = $resultid->fetch_assoc();
 $newid = $valid["lastid"] + 1;
 if (isset($_GET["1"])) {
-	$dupe = $duplicate . "<br><br>";
+	$err = $duplicate . "<br><br>";
+}
+if (isset($_GET["2"])) {
+	$err = $blankp . "<br><br>";
 }
 echo '<form action="adduser.php" method="post"><br>
 <p class="center" style="font-size:24px;"><strong>'. $newuser .'</strong></p>
-<div align="center"><br>'. $dupe .'
+<div align="center"><br>'. $err .'
 	<table style="border:0px; width=30%; font-size:15px;">
 		<tr>
 			<td>'.$user.'</td>
@@ -24,7 +27,7 @@ echo '<form action="adduser.php" method="post"><br>
 		</tr>
 		<tr>
 			<td>'.$password.'</td>
-			<td><input type="text" name="pass" size="50"></td>
+			<td><input type="text" name="pass" size="20"></td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
@@ -36,7 +39,7 @@ footer();
 if (isset($_POST["ok"])) {
 	if (($_POST["pass"] == null) or ($_POST["user"] == null)) {
 		$conn->close();
-		header('Location: users.php');
+		header('Location: adduser.php?2');
 		die();
 	}
 	$sqldupe = "SELECT * FROM `users` WHERE `name` = '". santise($_POST["user"]) ."'";
