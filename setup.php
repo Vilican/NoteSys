@@ -21,7 +21,7 @@ echo '<form action="setup.php" method="post"><br>
 	<table style="border:0px; width=50%; font-size:15px;">
 		<tr>
 			<td>'.$nsver.'</td>
-			<td>v1.5 (<a href="https://github.com/Vilican/NoteSys/releases" target="_blank">'.$actual.": ".$ver.'</a>)</td>
+			<td>v1.6 (<a href="https://github.com/Vilican/NoteSys/releases" target="_blank">'.$actual.": ".$ver.'</a>)</td>
 		</tr>
 		<tr>
 			<td>'.$instexistch.'</td>
