@@ -10,10 +10,6 @@ if ($_GET["id"] == null) {
 	header('Location: users.php');
 	die();
 }
-if ($_GET["id"] == 1) {
-	header('Location: users.php');
-	die();
-}
 if (isset($_GET["1"])) {
 	$err = $duplicate . "<br><br>";
 }
