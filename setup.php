@@ -13,7 +13,6 @@ if ($install === TRUE) {
 } else {
 	$install = $notexists;
 }
-$ver = "v" . file_get_contents("https://gist.githubusercontent.com/Vilican/5ad626940625997d63f9/raw/95283b309fe40fa99708e16e11397212e0ac32dc/vnotesys");
 templ();
 echo '<form action="setup.php" method="post"><br>
 <p class="center" style="font-size:24px;"><strong>'.$sysconf.'</strong></p>
@@ -21,7 +20,7 @@ echo '<form action="setup.php" method="post"><br>
 	<table style="border:0px; width=50%; font-size:15px;">
 		<tr>
 			<td>'.$nsver.'</td>
-			<td>v1.6 (<a href="https://github.com/Vilican/NoteSys/releases" target="_blank">'.$actual.": ".$ver.'</a>)</td>
+			<td>v1.6</td>
 		</tr>
 		<tr>
 			<td>'.$instexistch.'</td>
