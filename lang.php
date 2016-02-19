@@ -4,8 +4,11 @@ switch ($lng) {
 	case "en":
 		$inst_welcome = "Welcome in NoteSys";
 		$inst_instruct = "Setup config.php and then push this button.";
+		$upgrade_instruct = "If you are upgrading to v1.7 from v1.6 or older, upload all files, setup config.php and then click this button.";
 		$do_install = "Install NoteSys";
+		$do_upgrade = "Upgrade NoteSys";
 		$installed = "NoteSys was installed. Delete folder install.";
+		$upgraded = "NoteSys was upgraded. Delete folder install.";
 		$discard = "Back to web (discard changes)";
 		$goback = "Back to web";
 		$submit = "Submit";
@@ -47,13 +50,18 @@ switch ($lng) {
 		$blankp = "No field can be blank!";
 		$confdelno = "Really delete this note?";
 		$confdelnu = "Really delete this user?";
+		$textnavcol = "Navbar text color:";
+		$navcol = "Navbar color:";
 		$back = "Back";
 		break;
 	case "cz":
 		$inst_welcome = "Vítejte v NoteSys";
 		$inst_instruct = "Nastavte config.php a pak stiskněte toto tlačítko.";
+		$upgrade_instruct = "Pokud upgradujete na v1.7 z v1.6 nebo starší, nahrajte všechny soubory, nastavte config.php a pak stiskněte toto tlačítko.";
 		$do_install = "Instalovat NoteSys";
+		$do_upgrade = "Upgradovat NoteSys";
 		$installed = "NoteSys byl nainstalován. Smažte adresář install.";
+		$upgraded = "NoteSys byl upgradován. Smažte adresář install.";
 		$discard = "Zpátky na web (zrušit změny)";
 		$goback = "Zpátky na web";
 		$submit = "Odeslat";
@@ -95,6 +103,8 @@ switch ($lng) {
 		$blankp = "Žádné pole nemůže být prázdné!";
 		$confdelno = "Opravdu smazat tuto poznámku?";
 		$confdelnu = "Opravdu smazat tohoto uživatele?";
+		$textnavcol = "Barva textu v nabídce:";
+		$navcol = "Barva nabídky:";
 		$back = "Zpět";
 		break;
 }

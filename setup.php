@@ -20,7 +20,7 @@ echo '<form action="setup.php" method="post"><br>
 	<table style="border:0px; width=50%; font-size:15px;">
 		<tr>
 			<td>'.$nsver.'</td>
-			<td>v1.6</td>
+			<td>v1.7</td>
 		</tr>
 		<tr>
 			<td>'.$instexistch.'</td>
@@ -37,6 +37,14 @@ echo '<form action="setup.php" method="post"><br>
 		<tr>
 			<td>'.$heading.'</td>
 			<td><input type="text" name="heading" size="20" value="'. $name .'"></td>
+		</tr>
+		<tr>
+			<td>'.$navcol.'</td>
+			<td><input type="text" name="navcol" size="20" value="'. $navcolor .'"></td>
+		</tr>
+		<tr>
+			<td>'.$textnavcol.'</td>
+			<td><input type="text" name="textnavcol" size="20" value="'. $textnavcolor .'"></td>
 		</tr>
 		<tr>
 			<td>'.$textcol.'</td>
@@ -66,7 +74,7 @@ echo '<form action="setup.php" method="post"><br>
 </div></form>';
 footer();
 if (isset($_POST["ok"])) {
-	if (($_POST["title"] == null) or ($_POST["heading"] == null) or ($_POST["txtcol"] == null) or ($_POST["bckcol"] == null) or ($_POST["date"] == null) or ($_POST["field"] == null) or ($_POST["links"] == null)) {
+	if (($_POST["title"] == null) or ($_POST["heading"] == null) or ($_POST["txtcol"] == null) or ($_POST["bckcol"] == null) or ($_POST["date"] == null) or ($_POST["field"] == null) or ($_POST["links"] == null) or ($_POST["navcol"] == null) or ($_POST["textnavcol"] == null)) {
 		header('Location: setup.php');
 		die();
 	} else {
@@ -77,6 +85,8 @@ if (isset($_POST["ok"])) {
 	$sql6 = "UPDATE `settings` SET `value` = '". santise($_POST["txtcol"]) ."' WHERE `settings`.`id` = 'text'";
 	$sql7 = "UPDATE `settings` SET `value` = '". santise($_POST["title"]) ."' WHERE `settings`.`id` = 'title'";
 	$sql8 = "UPDATE `settings` SET `value` = '". santise($_POST["links"]) ."' WHERE `settings`.`id` = 'zlinks'";
+	$sql9 = "UPDATE `settings` SET `value` = '". santise($_POST["navcol"]) ."' WHERE `settings`.`id` = 'navcol'";
+	$sqlA = "UPDATE `settings` SET `value` = '". santise($_POST["textnavcol"]) ."' WHERE `settings`.`id` = 'textnavcol'";
 	$result2 = $conn->query($sql2);
 	$result3 = $conn->query($sql3);
 	$result4 = $conn->query($sql4);
@@ -84,6 +94,8 @@ if (isset($_POST["ok"])) {
 	$result6 = $conn->query($sql6);
 	$result7 = $conn->query($sql7);
 	$result8 = $conn->query($sql8);
+	$result9 = $conn->query($sql9);
+	$resultA = $conn->query($sqlA);
 	}
 	$conn->close();
 	header('Location: setup.php');

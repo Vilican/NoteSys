@@ -3,27 +3,44 @@ function templ() {
 require 'config.php';
 require 'lang.php';
 session_start();
-echo '<!doctype html>
-<html><head>
+echo '<!DOCTYPE html><html><head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="css.css" rel="stylesheet">
 <meta name="generator" content="NoteSys">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>'.$title.'</title>
-<link rel="stylesheet" href="style.css">
-<style>body{color:'. $text .';background-color:'. $backgrnd .';}a{color:'. $links .';}</style>
+<style>input,select,textarea{color:black}body{color:'. $text .';background-color:'. $backgrnd .';}a,a:hover,a:visited,a:active{color:'. $links .';}.navbar{background-color:'. $navcolor .';color:'. $textnavcolor .'}</style>
 </head><body>
-<p id="title">'. $name .'</p>';
+<div class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-warning-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="index.php" style="font-weight:bold;">'. $name .'</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-warning-collapse">
+      <ul class="nav navbar-nav navbar-right">';
 if($_SESSION["id"] == null) {
-	echo '<div id="menu"><a href="login.php">'. $login .'</a></div>';
+	echo '<li class="withripple"><a href="login.php">'. $login .'</li></a>';
 	} else {
-	echo '<div id="menu"><a href="logout.php">'.$logout.'</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php">'.$notes.'</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="addnote.php">'.$addnote.'</a>';
+	echo '<li class="withripple"><a href="logout.php">'. $logout .'</li></a><li class="withripple"><a href="index.php">'. $notes .'</li></a><li class="withripple"><a href="addnote.php">'. $addnote .'</li></a>';
 
 if ($_SESSION["id"] == 1) {
-	echo '&nbsp;&nbsp;&nbsp;&nbsp;<a href="users.php">'.$users.'</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="adduser.php">'.$newuser.'</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="setup.php">'.$sysconf.'</a></div>';
+	echo '<li class="withripple"><a href="users.php">'. $users .'</li></a><li class="withripple"><a href="adduser.php">'. $newuser .'</li></a><li class="withripple"><a href="setup.php">'. $sysconf .'</li></a>';
 	} else {
-	echo '&nbsp;&nbsp;&nbsp;&nbsp;<a href="chpass.php">'.$chpass.'</a></div>'; }}
+	echo '<li class="withripple"><a href="chpass.php">'. $chpass .'</li></a>'; }}
+echo "</ul></div></div></div>";
 }
 function footer() {
-echo '<p id="copyright">Powered by <a href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';	
+echo '<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js.js"></script><script>$.material.init();</script>
+<p id="copyright">Powered by <a href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';	
 }
 function checklogin($require){
 require 'config.php';

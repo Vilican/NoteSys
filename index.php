@@ -3,7 +3,7 @@ require "config.php";
 require_once "funct.php";
 templ();
 checklogin("no");
-echo "<br><br>";
+echo "<br>";
 $sql = "SELECT * FROM `entries` ORDER BY `date` DESC";
 $result = $conn->query($sql);
 $field2 = $field;
