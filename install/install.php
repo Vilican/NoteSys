@@ -39,7 +39,7 @@ switch ($lng) {
 		$date = "Date:";
 		break;
 }
-$sql7="INSERT INTO `settings` (`id`, `value`) VALUES ('backgrnd', 'lightgreen'), ('date', '". $date ."'), ('field', '". $field ."'), ('name', 'NoteSys'), ('navcol', 'green'), ('text', 'black'), ('textnavcol', 'yellow'), ('title', 'NoteSys'), ('zlinks', 'blue');";
+$sql7="INSERT INTO `settings` (`id`, `value`) VALUES ('backgrnd', 'lightgreen'), ('date', '". $date ."'), ('field', '". $field ."'), ('name', 'NoteSys'), ('navcol', 'green'), ('text', 'black'), ('textnavcol', 'yellow'), ('title', 'NoteSys'), ('zlinks', 'blue'), ('extsec', '0'), ('httpsredir', '0');";
 $ok = 1;
 if ($conn->query($sql) === TRUE) {} else { echo "ERROR: " . $conn->error. "<br>"; $ok = 0;}
 if ($conn->query($sql2) === TRUE) {} else { echo "ERROR: " . $conn->error. "<br>"; $ok = 0;}
