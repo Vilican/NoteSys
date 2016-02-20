@@ -40,6 +40,21 @@ $title = $settings["title"];
 $links = $settings["zlinks"];
 $navcolor = $settings["navcol"];
 $textnavcolor = $settings["textnavcol"];
+$requirehttps = $settings["httpsredir"];
+$extsec = $settings["extsec"];
+
+if ($extsec == 1) {
+	header('X-XSS-Protection: 1; mode=block', true);
+	header('X-Content-Type-Options: nosniff', true);
+}
+
+if ($requirehttps == 1 and INSTALL != 1) {
+	if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == ""){
+		$redirect = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		header("HTTP/1.1 301 Moved Permanently");
+		header("Location: $redirect");
+	}
+}
 
 require_once "lang.php";
 

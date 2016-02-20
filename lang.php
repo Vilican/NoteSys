@@ -5,6 +5,7 @@ switch ($lng) {
 		$inst_welcome = "Welcome in NoteSys";
 		$inst_instruct = "Setup config.php and then push this button.";
 		$upgrade_instruct = "If you are upgrading from v1.6 or older, upload all files, setup config.php and then click this button.";
+		$upgrade2_instruct = "If you are upgrading from v1.7 or v1.7.1, upload all files, setup config.php and then click this button.";
 		$do_install = "Install NoteSys";
 		$do_upgrade = "Upgrade NoteSys";
 		$installed = "NoteSys was installed. Delete folder install.";
@@ -53,11 +54,14 @@ switch ($lng) {
 		$textnavcol = "Navbar text color:";
 		$navcol = "Navbar color:";
 		$back = "Back";
+		$reqhttps = "Require HTTPS:";
+		$extendsecurity = "Extended security:";
 		break;
 	case "cz":
 		$inst_welcome = "Vítejte v NoteSys";
 		$inst_instruct = "Nastavte config.php a pak stiskněte toto tlačítko.";
 		$upgrade_instruct = "Pokud upgradujete z v1.6 nebo starší, nahrajte všechny soubory, nastavte config.php a pak stiskněte toto tlačítko.";
+		$upgrade2_instruct = "Pokud upgradujete z v1.7 nebo v1.7.1, nahrajte všechny soubory, nastavte config.php a pak stiskněte toto tlačítko.";
 		$do_install = "Instalovat NoteSys";
 		$do_upgrade = "Upgradovat NoteSys";
 		$installed = "NoteSys byl nainstalován. Smažte adresář install.";
@@ -106,6 +110,8 @@ switch ($lng) {
 		$textnavcol = "Barva textu v nabídce:";
 		$navcol = "Barva nabídky:";
 		$back = "Zpět";
+		$reqhttps = "Požadovat HTTPS:";
+		$extendsecurity = "Pokročilé zabezpečení:";
 		break;
 }
 ?>

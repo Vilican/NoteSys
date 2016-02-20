@@ -13,6 +13,16 @@ if ($install === TRUE) {
 } else {
 	$install = $notexists;
 }
+if ($requirehttps == 1) {
+	$requirehttps = "checked";
+} else {
+	$requirehttps = null;
+}
+if ($extsec == 1) {
+	$extsec = "checked";
+} else {
+	$extsec = null;
+}
 templ();
 echo '<form action="setup.php" method="post"><br>
 <p class="center" style="font-size:24px;"><strong>'.$sysconf.'</strong></p>
@@ -20,7 +30,7 @@ echo '<form action="setup.php" method="post"><br>
 	<table style="border:0px; width=50%; font-size:15px;">
 		<tr>
 			<td>'.$nsver.'</td>
-			<td>v1.7.1</td>
+			<td>v1.7.2</td>
 		</tr>
 		<tr>
 			<td>'.$instexistch.'</td>
@@ -67,6 +77,14 @@ echo '<form action="setup.php" method="post"><br>
 			<td><input type="text" name="field" size="20" value="'. $field .'"></td>
 		</tr>
 		<tr>
+			<td>'.$reqhttps.'</td>
+			<td><input type="checkbox" name="httpsredir" '. $requirehttps .'></td>
+		</tr>
+		<tr>
+			<td>'.$extendsecurity.'</td>
+			<td><input type="checkbox" name="extsec" '. $extsec .'></td>
+		</tr>
+		<tr>
 			<td>&nbsp;</td>
 			<td><input type="submit" value="'.$submit.'" name="ok"></td>
 		</tr>
@@ -78,6 +96,16 @@ if (isset($_POST["ok"])) {
 		header('Location: setup.php');
 		die();
 	} else {
+	if (santise($_POST["httpsredir"]) == "on") {
+		$httpsredir = 1;
+	} else {
+		$httpsredir = 0;
+	}
+	if (santise($_POST["extsec"]) == "on") {
+		$extsec = 1;
+	} else {
+		$extsec = 0;
+	}
 	$sql2 = "UPDATE `settings` SET `value` = '". santise($_POST["bckcol"]) ."' WHERE `settings`.`id` = 'backgrnd'";
 	$sql3 = "UPDATE `settings` SET `value` = '". santise($_POST["date"]) ."' WHERE `settings`.`id` = 'date'";
 	$sql4 = "UPDATE `settings` SET `value` = '". santise($_POST["field"]) ."' WHERE `settings`.`id` = 'field'";
@@ -87,6 +115,8 @@ if (isset($_POST["ok"])) {
 	$sql8 = "UPDATE `settings` SET `value` = '". santise($_POST["links"]) ."' WHERE `settings`.`id` = 'zlinks'";
 	$sql9 = "UPDATE `settings` SET `value` = '". santise($_POST["navcol"]) ."' WHERE `settings`.`id` = 'navcol'";
 	$sqlA = "UPDATE `settings` SET `value` = '". santise($_POST["textnavcol"]) ."' WHERE `settings`.`id` = 'textnavcol'";
+	$sqlB = "UPDATE `settings` SET `value` = '". $httpsredir ."' WHERE `settings`.`id` = 'httpsredir'";
+	$sqlC = "UPDATE `settings` SET `value` = '". $extsec ."' WHERE `settings`.`id` = 'extsec'";
 	$result2 = $conn->query($sql2);
 	$result3 = $conn->query($sql3);
 	$result4 = $conn->query($sql4);
@@ -96,6 +126,8 @@ if (isset($_POST["ok"])) {
 	$result8 = $conn->query($sql8);
 	$result9 = $conn->query($sql9);
 	$resultA = $conn->query($sqlA);
+	$resultB = $conn->query($sqlB);
+	$resultC = $conn->query($sqlC);
 	}
 	$conn->close();
 	header('Location: setup.php');

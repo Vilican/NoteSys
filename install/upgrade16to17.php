@@ -12,7 +12,7 @@ echo '<!doctype html><html><head>
 </head><body><br><br>
 <p class="center" style="color:#FFFF00 !important; font-size:25px !important">'. $inst_welcome .'</p>
 <p class="center" style="color:#FFFF00 !important; font-size:16px !important">'. $upgrade_instruct .'</p><br>
-<form class="center" action="upgrade.php" method="post"><input type="submit" name="ok" value="'.$do_upgrade.'" class="center"></form>
+<form class="center" action="upgrade16to17.php" method="post"><input type="submit" name="ok" value="'.$do_upgrade.'" class="center"></form>
 <p id="copyright">Powered by <a style="color:#FFFF00 !important;" href="https://notesys.sufix.cz">NoteSys</a></p></body></html>';
 
 if (isset($_POST["ok"])) {
