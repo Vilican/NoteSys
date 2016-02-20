@@ -4,7 +4,7 @@ switch ($lng) {
 	case "en":
 		$inst_welcome = "Welcome in NoteSys";
 		$inst_instruct = "Setup config.php and then push this button.";
-		$upgrade_instruct = "If you are upgrading to v1.7 from v1.6 or older, upload all files, setup config.php and then click this button.";
+		$upgrade_instruct = "If you are upgrading from v1.6 or older, upload all files, setup config.php and then click this button.";
 		$do_install = "Install NoteSys";
 		$do_upgrade = "Upgrade NoteSys";
 		$installed = "NoteSys was installed. Delete folder install.";
@@ -57,7 +57,7 @@ switch ($lng) {
 	case "cz":
 		$inst_welcome = "Vítejte v NoteSys";
 		$inst_instruct = "Nastavte config.php a pak stiskněte toto tlačítko.";
-		$upgrade_instruct = "Pokud upgradujete na v1.7 z v1.6 nebo starší, nahrajte všechny soubory, nastavte config.php a pak stiskněte toto tlačítko.";
+		$upgrade_instruct = "Pokud upgradujete z v1.6 nebo starší, nahrajte všechny soubory, nastavte config.php a pak stiskněte toto tlačítko.";
 		$do_install = "Instalovat NoteSys";
 		$do_upgrade = "Upgradovat NoteSys";
 		$installed = "NoteSys byl nainstalován. Smažte adresář install.";
