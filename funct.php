@@ -26,14 +26,14 @@ echo '<!DOCTYPE html><html><head>
     <div class="navbar-collapse collapse navbar-warning-collapse">
       <ul class="nav navbar-nav navbar-right">';
 if($_SESSION["id"] == null) {
-	echo '<li class="withripple"><a href="login.php">'. $login .'</li></a>';
+	echo '<li class="withripple"><a href="login.php">'. $login .'</a></li>';
 	} else {
-	echo '<li class="withripple"><a href="logout.php">'. $logout .'</li></a><li class="withripple"><a href="index.php">'. $notes .'</li></a><li class="withripple"><a href="addnote.php">'. $addnote .'</li></a>';
+	echo '<li class="withripple"><a href="logout.php">'. $logout .'</a></li><li class="withripple"><a href="index.php">'. $notes .'</a></li><li class="withripple"><a href="addnote.php">'. $addnote .'</a></li>';
 
 if ($_SESSION["id"] == 1) {
-	echo '<li class="withripple"><a href="users.php">'. $users .'</li></a><li class="withripple"><a href="adduser.php">'. $newuser .'</li></a><li class="withripple"><a href="setup.php">'. $sysconf .'</li></a>';
+	echo '<li class="withripple"><a href="users.php">'. $users .'</a></li><li class="withripple"><a href="adduser.php">'. $newuser .'</a></li><li class="withripple"><a href="setup.php">'. $sysconf .'</a></li>';
 	} else {
-	echo '<li class="withripple"><a href="chpass.php">'. $chpass .'</li></a>'; }}
+	echo '<li class="withripple"><a href="chpass.php">'. $chpass .'</a></li>'; }}
 echo "</ul></div></div></div>";
 }
 function footer() {

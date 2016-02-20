@@ -20,7 +20,7 @@ echo '<form action="setup.php" method="post"><br>
 	<table style="border:0px; width=50%; font-size:15px;">
 		<tr>
 			<td>'.$nsver.'</td>
-			<td>v1.7</td>
+			<td>v1.7.1</td>
 		</tr>
 		<tr>
 			<td>'.$instexistch.'</td>
