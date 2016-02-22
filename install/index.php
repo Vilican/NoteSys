@@ -11,9 +11,9 @@ echo '<!doctype html><html><head>
 </head><body><br>
 <a href="install.php">NEW INSTALATION OF NOTESYS</a><br><br>
 <a href="upgrade16to17.php">UPGRADE DATABASE FROM v1.6 OR OLDER TO v1.7</a><br>
-<a href="upgrade17to172.php">UPGRADE DATABASE FROM v1.7 TO v1.7.2</a><br><br>
+<a href="upgrade17to172.php">UPGRADE DATABASE FROM v1.7 TO CURRENT</a><br><br>
 <a href="resetpass.php">RESET SUPERUSER PASSWORD TO BLANK</a><br>
-<a href="resetsec.php">DISABLE REQUIRE OF HTTPS AND EXTENDED SECURITY (only for v1.7.2)</a>
+<a href="resetsec.php">DISABLE REQUIRE OF HTTPS AND EXTENDED SECURITY (only for v1.7.2 and newer)</a>
 </body></html>';
 
 ?>
