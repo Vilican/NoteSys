@@ -30,7 +30,7 @@ echo '<form action="setup.php" method="post"><br>
 	<table style="border:0px; width=50%; font-size:15px;">
 		<tr>
 			<td>'.$nsver.'</td>
-			<td>v1.7.2</td>
+			<td>v1.7.3</td>
 		</tr>
 		<tr>
 			<td>'.$instexistch.'</td>
@@ -107,9 +107,9 @@ if (isset($_POST["ok"])) {
 		$extsec = 0;
 	}
 	$sql2 = "UPDATE `settings` SET `value` = '". santise($_POST["bckcol"]) ."' WHERE `settings`.`id` = 'backgrnd'";
-	$sql3 = "UPDATE `settings` SET `value` = '". santise($_POST["date"]) ."' WHERE `settings`.`id` = 'date'";
-	$sql4 = "UPDATE `settings` SET `value` = '". santise($_POST["field"]) ."' WHERE `settings`.`id` = 'field'";
-	$sql5 = "UPDATE `settings` SET `value` = '". santise($_POST["heading"]) ."' WHERE `settings`.`id` = 'name'";
+	$sql3 = "UPDATE `settings` SET `value` = '". $_POST["date"] ."' WHERE `settings`.`id` = 'date'";
+	$sql4 = "UPDATE `settings` SET `value` = '". $_POST["field"] ."' WHERE `settings`.`id` = 'field'";
+	$sql5 = "UPDATE `settings` SET `value` = '". $_POST["heading"] ."' WHERE `settings`.`id` = 'name'";
 	$sql6 = "UPDATE `settings` SET `value` = '". santise($_POST["txtcol"]) ."' WHERE `settings`.`id` = 'text'";
 	$sql7 = "UPDATE `settings` SET `value` = '". santise($_POST["title"]) ."' WHERE `settings`.`id` = 'title'";
 	$sql8 = "UPDATE `settings` SET `value` = '". santise($_POST["links"]) ."' WHERE `settings`.`id` = 'zlinks'";

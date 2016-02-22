@@ -38,7 +38,7 @@ if (isset($_POST["ok"])) {
 		header('Location: edit.php?1&id=' . $_GET["id"]);
 		die();
 	} else {
-	$sql2 = "UPDATE `entries` SET `date` = '" . santise(strtotime($_POST["date"])) . "', `value` = '" . santise($_POST["value"]) . "' WHERE `entries`.`id` = " . santise($_GET["id"]);
+	$sql2 = "UPDATE `entries` SET `date` = '" . santise(strtotime($_POST["date"])) . "', `value` = '" . $_POST["value"] . "' WHERE `entries`.`id` = " . santise($_GET["id"]);
 	$result2 = $conn->query($sql2);
 	}
 	$conn->close();
